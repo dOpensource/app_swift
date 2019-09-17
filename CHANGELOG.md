@@ -2,6 +2,21 @@
 
 
 
+### Fix astobj2 memory issues
+
+> Branches Affected: master  
+> Tags Affected:   
+> Date: Tue, 17 Sep 2019 13:27:28 -0400  
+> Author: Tyler Moore (tmoore@goflyball.com)  
+> Committer: Tyler Moore (tmoore@goflyball.com)  
+
+- Resolves #2
+- change astobj2 initialization to fix astobj memory issues
+
+
+---
+
+
 ### Add Support for Asterisk Ver > 13
 
 > Branches Affected: master  
