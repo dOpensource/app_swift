@@ -2,6 +2,19 @@
 
 
 
+### fix broken documentation syntax
+
+> Branches Affected: master  
+> Tags Affected:   
+> Date: Fri, 20 Sep 2019 10:12:39 -0400  
+> Author: Jeremy Kister (com-github@jeremykister.com)  
+> Committer: Tyler Moore (tmoore@goflyball.com)  
+
+
+
+---
+
+
 ### Fix astobj2 memory issues
 
 > Branches Affected: master  
