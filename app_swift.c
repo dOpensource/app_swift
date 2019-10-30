@@ -442,10 +442,10 @@ static int app_exec(struct ast_channel *chan, const char *data)
 	if ( (ps = ast_malloc(sizeof(struct stuff))) == NULL ) {
 #else
 	if ( (ps = ao2_alloc_options(sizeof(struct stuff), NULL, AO2_ALLOC_OPT_LOCK_RWLOCK)) == NULL ) {
+#endif
 		ast_log(LOG_WARNING, "malloc fail! - memory problem?\n");
 		goto exception;
 	}
-#endif
 	swift_init_stuff(ps);
 
 	/* Setup synthesis */
