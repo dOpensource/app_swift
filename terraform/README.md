@@ -24,7 +24,7 @@ cp
 
 ```
 terraform init
-terraform apply
+terraform -var do_token=$DIGITALOCEAN_TOKEN -var pvt_key="~/.ssh/dopensource-training" -var num_of_environments=<number goes here> apply
 ```
 
 4. Destroy Terraform to build the environment
