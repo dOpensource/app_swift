@@ -18,8 +18,8 @@ variable "kamailio-dropletname" {
 }
 
 # The name ofthe FusionPBX Instances
-variable "fusionpbx-dropletname" {
-  default = "fusionpbx"
+variable "asterisk-dropletname" {
+  default = "asterisk"
 }
 
 # The Number of Environments to Deploy
