@@ -1,21 +1,13 @@
+# app_swift - A Cepstral Swift TTS engine interface
+
+Copyright (C) 2006-2012 - Darren Sessions . 
+Portions Copyright (C) 2012, Cepstral LLC . 
+Portions Copyright (C) 2013-2016 - Jeremy Kister . 
+Portions Copyright (C) 2019 - dOpenSource . 
  
-  app_swift - A Cepstral Swift TTS engine interface
+All rights reserved . 
 
-  Copyright (C) 2006-2012 - Darren Sessions
-  Portions Copyright (C) 2012, Cepstral LLC.
-  Portions Copyright (C) 2013-2016 - Jeremy Kister
-
- 
-  All rights reserved.
-
-  ---
-  This program is free software, distributed under the terms of
-  the GNU General Public License Version 2. Read the LICENSE
-  file for details.
-  ---
-
-
-  Synopsis:
+## Synopsis:
 
         Provides a direct interface into the Cepstral
         text-to-speech engine for Asterisk eliminating
@@ -26,12 +18,12 @@
         a max digits and a wait-for-digit timer very 
         simular to the AGI 'get data' command.
 
-  Requirements: 
+## Requirements: 
 
         - Asterisk development header files
         - Cepstral Swift Text-to-Speech engine (version 5 or 6)
 
-  Configuration: 
+## Configuration: 
                 
         - Check that the swift libraries are in your ld path  
 
@@ -63,14 +55,14 @@
 
         - On some distributions you made need to copy asterisk.h to /usr/include
 
-  Installation:  
+## Installation:  
 
         ./configure [options]
         make
         make install (as root)
         make reload (as root)
 
-  Usage:        
+## Usage:        
 
         Type "core show application swift" at the Asterisk CLI prompt.
 
