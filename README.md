@@ -1,11 +1,12 @@
 # app_swift - A Cepstral Swift TTS engine interface
 
-Copyright (C) 2006-2012 - Darren Sessions . 
-Portions Copyright (C) 2012, Cepstral LLC . 
-Portions Copyright (C) 2013-2016 - Jeremy Kister . 
+Copyright (C) 2006-2012 - Darren Sessions .  
+Portions Copyright (C) 2012, Cepstral LLC .  
+Portions Copyright (C) 2013-2016 - Jeremy Kister .   
 Portions Copyright (C) 2019 - dOpenSource . 
- 
+
 All rights reserved . 
+
 
 ## Synopsis:
 
