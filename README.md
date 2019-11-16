@@ -42,7 +42,7 @@ In <your asterisk path>/modules.conf uncomment EITHER:
         
 `;noload => chan_alsa.so` or `;noload => chan_oss.so`
 
-### Load the module if not loaded:  
+Load the module if not loaded:  
 
 ```
 asterisk -x 'module show like <your channel driver>'
