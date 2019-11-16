@@ -91,6 +91,7 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 305000 $")
 				    <para>exten => s,n,Swift(Please enter three digits,5000,3)</para>
 				    <para>exten => s,n,Swift(You entered ${SWIFT_DTMF}.  Goodbye)</para>
 				    <para>exten => s,n,Hangup</para>
+                    </para>
                 </description>
         </application>
  ***/
@@ -160,6 +161,8 @@ static void swift_init_stuff(struct stuff *ps)
 {
 #if (_AST_MAJ_VER <= 15)
 	ASTOBJ_INIT(ps);
+#else
+    ps = ao2_alloc(sizeof(*ps), NULL);
 #endif
 	ps->generating_done = 0;
 	ps->q = ast_malloc(cfg_buffer_size);
@@ -428,8 +431,7 @@ static int app_exec(struct ast_channel *chan, const char *data)
 	if (ast_strlen_zero(text)) {
 		ast_log(LOG_WARNING, "%s requires text to speak!\n", app);
 		return -1;
-	}
-	else {
+	}else{
 		ast_log(LOG_DEBUG, "Text to Speak : %s\n", text);
 	}
 	if (timeout > 0) {
@@ -438,14 +440,11 @@ static int app_exec(struct ast_channel *chan, const char *data)
 	if (max_digits > 0) {
 		ast_log(LOG_DEBUG, "Max Digits : %d\n", max_digits);
 	}
-#if (_AST_MAJ_VER <= 15)
-	if ( (ps = ast_malloc(sizeof(struct stuff))) == NULL ) {
-#else
-	if ( (ps = ao2_alloc_options(sizeof(struct stuff), NULL, AO2_ALLOC_OPT_LOCK_RWLOCK)) == NULL ) {
+
+	if( (ps = ast_malloc(sizeof(struct stuff))) == NULL ){
 		ast_log(LOG_WARNING, "malloc fail! - memory problem?\n");
-		goto exception;
-	}
-#endif
+        goto exception;
+    }
 	swift_init_stuff(ps);
 
 	/* Setup synthesis */
