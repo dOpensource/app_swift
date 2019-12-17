@@ -26,8 +26,6 @@ resource "digitalocean_droplet" "asterisk" {
         provisioner "remote-exec" {
           inline = [
           "export PATH=$PATH:/usr/bin",
-          # install git repo and and server up the index page
-          #"sudo mkdir -p ~/bits/test",
           "yum groupinstall –y Development Tools -y ",
           "yum install –y ncurses-dev uuid-devel libuuid-devel libxml2-devel sqlite-devel bison subversion git-core -y ",
           "sleep 20",
