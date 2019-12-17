@@ -13,7 +13,7 @@ Asterisk 16 Link:
 
 
 
-Please note that Appswift & Cepestral have to be installed manually after your asterisk build is up and running. 
+Please note that Appswift & Cepstral have to be installed manually after your asterisk build is up and running. 
 
 
 
