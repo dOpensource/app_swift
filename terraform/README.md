@@ -1,36 +1,19 @@
-## Build Environments for app_swift
 
-Contains scripts for building test environments for validating app_swift builds
 
-## Setup Environment
+We have built 2 Terraform scripts for both Asterisk 13 & Asterisk 16.  
+```
+The instructions can be found on the following links: (README LINKS)
 
-These configuration scripts was built for Digital Ocean (DO)
+Asterisk 13 Link:
+https://github.com/dOpensource/app_swift/blob/terraform-builds/terraform/asterisk13/README.md
 
-1. Login to Digital Ocean, create a token and setup your token in your environment
+Asterisk 16 Link:
+https://github.com/dOpensource/app_swift/blob/terraform-builds/terraform/asterisk16/README.md
+
+Please note that Appswift & Cepestral have to be installed manually after your asterisk build is up and running. 
+
 
 ```
-DIGITALOCEAN_TOKEN=<your token>
-```
 
-2. Download terraform from https://releases.hashicorp.com/terraform/.  Use any version starting with 0.12
-
-```
-wget https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_darwin_amd64.zip
-unzip terraform_0.12.13_darwin_amd64.zip
-cp 
-```
-
-3. Execute Terraform to build the environment
-
-```
-terraform init
-terraform apply -var do_token=$DIGITALOCEAN_TOKEN -var pvt_key="~/.ssh/dopensource-training" -var num_of_environments=<number goes here> 
-```
-
-4. Destroy Terraform to build the environment
-
-```
-terraform destroy
-```
 
 
