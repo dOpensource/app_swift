@@ -2,11 +2,9 @@
 # 
 #  Copyright (C) 2006 - 2011, Darren Sessions
 #  Portions Copyright (C) 2013 - 2016 Jeremy Kister
+#  Portions Copyright (C) 2019 - 2021, dOpenSource
 # 
-#  Darren Sessions <darrensessions@me.com>
-#
-#  http://www.twitter.com/darrensessions
-#  http://www.linkedin.com/in/dsessions
+#  POC: Tyler Moore (@dOpenSource) <tmoore@goflyball.com>
 # 
 #  This program is free software, distributed under the
 #  terms of the GNU General Public License Version 2. See
@@ -22,7 +20,6 @@ SWIFT_VER=%%SWIFT_VER%%
 
 SYS_LIB_DIR=%%LIB_DIR%%
 SYS_INC_DIR=%%INC_DIR%%
-VAR_LIB_DIR=%%VAR_DIR%%
 SYS_CNF_DIR=%%CNF_DIR%%
 
 AST_FULL_VER=%%AST_FULL_VER%%
@@ -34,15 +31,15 @@ SOLINK=%%SOLINK%%
 NAME=app_swift
 CONF=swift.conf
 AST_CFG_DIR=$(SYS_CNF_DIR)/asterisk
-AST_VAR_DIR=$(VAR_LIB_DIR)/asterisk
-AST_MOD_DIR=$(SYS_LIB_DIR)/asterisk/modules
+AST_VAR_DIR=$(shell awk '/^astvarlibdir/ {print $$3}' $(AST_CFG_DIR)/asterisk.conf)
+AST_MOD_DIR=$(shell awk '/^astmoddir/ {print $$3}' $(AST_CFG_DIR)/asterisk.conf)
 AST_INC_DIR=$(SYS_INC_DIR)/asterisk
 
 CFLAGS=-I$(SWIFT_DIR)/include -I$(SYS_INC_DIR) -g -Wall -fPIC
 LDFLAGS=-L$(SWIFT_DIR)/lib -L$(SYS_LIB_DIR) -lswift \
 	    $(patsubst $(SWIFT_DIR)/lib/lib%.so,-l%,$(wildcard $(SWIFT_DIR)/lib/libcep*.so))
 
-CFLAGS+=-D_SWIFT_VER_$(SWIFT_VER)
+CFLAGS+=-DSWIFT_VER_$(SWIFT_VER)
 
 AST_INC_CHECK=$(shell if ! [ -f $(AST_INC_DIR)/channel.h ]; then echo "ast_inc_fail"; fi)
 
@@ -50,14 +47,14 @@ PRE = built
 
 BUILD = built/$(NAME).o built/$(NAME).so built/$(NAME)-en_US.xml built/$(CONF)
 
-CLEAN = $(BUILD) Makefile 
+CLEAN = $(BUILD) Makefile
 
 ifeq ($(AST_MAJOR_VER),)
 	AST_VER_CHECK=ast_ver_fail
 else
 	AST_VER_CHECK=
-	CFLAGS+=-D_AST_VER_$(AST_MAJOR_VER)
-	CFLAGS+=-D_AST_MAJ_VER=$(AST_MAJOR_VER)
+	CFLAGS+=-DAST_VER_$(AST_MAJOR_VER)
+	CFLAGS+=-DAST_MAJ_VER=$(AST_MAJOR_VER)
 endif
 
 all: banner $(AST_INC_CHECK) $(AST_VER_CHECK) built $(BUILD) made-msg
@@ -145,9 +142,9 @@ install: all
 
 
 	@echo ""
-	@echo "  ********************************************************"
-	@echo "  *  Or, run 'make reload' load app_swift into Asterisk. *"
-	@echo "  ********************************************************"
+	@echo "  ***********************************************************"
+	@echo "  *  Or, run 'make reload' to load app_swift into Asterisk. *"
+	@echo "  ***********************************************************"
 	@echo ""
 
 reload:
